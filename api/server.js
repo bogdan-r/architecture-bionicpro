@@ -58,7 +58,7 @@ const authenticateToken = async (req, res, next) => {
     }
 
     if (!verified.realm_access.roles.includes(KEYCLOAK_REALM_VALID_ROLE)) {
-      return res.status(401).json({ error: 'Invalid role' });
+      return res.status(403).json({ error: 'Invalid role' });
     }
 
     req.user = verified;

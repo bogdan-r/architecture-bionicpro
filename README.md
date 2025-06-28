@@ -7,7 +7,6 @@
 - **Frontend**: React приложение с TypeScript
 - **Backend**: Node.js API с Express
 - **Authentication**: Keycloak с PKCE
-- **Database**: PostgreSQL для Keycloak
 
 ## Компоненты
 
@@ -78,34 +77,3 @@ docker-compose up --build
 #### Тест 4: Доступ с невалидным токеном
 1. Отправьте запрос с невалидным токеном
 2. Ожидаемый результат: ошибка 401 "Invalid or expired token"
-
-## API Endpoints
-
-### GET /health
-Проверка состояния API
-```bash
-curl http://localhost:8000/health
-```
-
-### GET /reports
-Получение отчётов (требует аутентификации и роль prothetic_user)
-```bash
-curl -H "Authorization: Bearer YOUR_TOKEN" http://localhost:8000/reports
-```
-
-## Безопасность
-
-### PKCE Flow
-1. Клиент генерирует `code_verifier` (случайная строка)
-2. Клиент создаёт `code_challenge` (SHA256 хеш от code_verifier)
-3. Клиент отправляет `code_challenge` в запросе авторизации
-4. Сервер возвращает authorization code
-5. Клиент отправляет authorization code + `code_verifier` для получения токена
-6. Сервер проверяет, что хеш от `code_verifier` совпадает с `code_challenge`
-
-### JWT Validation
-- Проверка подписи токена через JWKS
-- Валидация audience и issuer
-- Проверка срока действия токена
-- Проверка ролей пользователя
-

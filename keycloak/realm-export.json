@@ -129,8 +129,6 @@
         "secret": "oNwoLQdvJAvRcL89SydqCWCe5ry1jMgq",
         "bearerOnly": false,
         "publicClient": false,
-        "redirectUris": ["http://localhost:3000/*"],
-        "webOrigins": ["http://localhost:3000"],
         "standardFlowEnabled": true,
         "implicitFlowEnabled": false,
         "serviceAccountsEnabled": false,
